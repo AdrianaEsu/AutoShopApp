@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="@color/purple_200">
+
+
+    <view
+        android:id="@+id/view"
+        class="androidx.viewpager.widget.ViewPager"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:background="@color/ic_launcher_background"
+        app:layout_constraintBottom_toBottomOf="@+id/view3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/textView2"
+        style="@style/Theme.AutoShopSplash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_black"
+        android:text="@string/app"
+        android:textColor="@color/design_default_color_error"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.252"
+        app:layout_constraintStart_toStartOf="@+id/view"
+        app:layout_constraintTop_toTopOf="@+id/view" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="49dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="@+id/view"
+        app:layout_constraintTop_toTopOf="@+id/view" />
+
+    <view
+        android:id="@+id/view3"
+        class="androidx.viewpager.widget.ViewPager"
+        android:layout_width="416dp"
+        android:layout_height="66dp"
+        android:background="@drawable/pie"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.993"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+
+    <EditText
+
+        android:id="@+id/marca"
+        android:layout_width="329dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bordes"
+        android:drawableEnd="@drawable/marca"
+        android:fontFamily="@font/roboto_bold"
+        android:hint="Marca"
+        android:padding="16dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+
+    <EditText
+
+        android:id="@+id/modelo"
+        android:layout_width="329dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bordes"
+        android:drawableEnd="@drawable/modelo"
+        android:fontFamily="@font/roboto_bold"
+        android:hint="Modelo"
+        android:padding="16dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+
+        android:textSize="16sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/marca" />
+
+    <EditText
+
+        android:id="@+id/km"
+        android:layout_width="329dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bordes"
+        android:drawableEnd="@drawable/modelo"
+        android:fontFamily="@font/roboto_bold"
+        android:hint="Kilometraje"
+        android:padding="16dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/modelo" />
+
+    <EditText
+
+        android:id="@+id/cilindraje"
+        android:layout_width="329dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bordes"
+        android:drawableEnd="@drawable/cilindraje"
+        android:fontFamily="@font/roboto_bold"
+        android:hint="Cilindraje"
+        android:padding="16dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/km" />
+
+    <EditText
+
+        android:id="@+id/precio"
+        android:layout_width="329dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bordes"
+        android:drawableEnd="@drawable/precio"
+        android:fontFamily="@font/roboto_bold"
+        android:hint="Precio"
+        android:padding="16dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cilindraje" />
+
+    <EditText
+
+        android:id="@+id/vendedor"
+        android:layout_width="329dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bordes"
+        android:drawableEnd="@drawable/nombre"
+        android:fontFamily="@font/roboto_bold"
+        android:hint="Usuario del Vendedor"
+        android:padding="16dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/precio" />
+
+    <Button
+        android:id="@+id/publicar"
+        android:layout_width="164dp"
+        android:layout_height="44dp"
+        android:background="@drawable/boton"
+        android:backgroundTint="@color/purple_700"
+        android:fontFamily="@font/roboto_black"
+        android:text="@string/boton3"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/view3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.55"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.093"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="331dp"
+        android:layout_height="122dp"
+        android:orientation="horizontal"
+
+        app:layout_constraintBottom_toTopOf="@+id/view3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vendedor"
+        app:layout_constraintVertical_bias="0.074">
+
+        <ImageView
+            android:id="@+id/imagenfoto"
+            android:layout_width="190dp"
+            android:layout_height="111dp"
+            app:srcCompat="@drawable/vehiculos" />
+
+        <Button
+            android:id="@+id/tomarfoto"
+            android:layout_width="56dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="36dp"
+            android:background="@drawable/boton"
+            android:backgroundTint="@color/purple_700"
+            android:drawableEnd="@drawable/camara"
+            android:fontFamily="@font/roboto_black"
+            android:text=""
+            android:textColor="@color/white"
+
+            tools:ignore="SpeakableTextPresentCheck" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">AutoShopSplash</string>
+    <string name="Inicio" />
+    <string name="inicio">Iniciar Sesion</string>
+    <string name="email">Correo Electronico</string>
+    <string name="contraseña">Password</string>
+    <string name="boton">Ingresar</string>
+    <string name="app">AutoShop</string>
+    <string name="registro">Resgistro</string>
+    <string name="boton1">Registrar</string>
+    <string name="boton2">Restablecer</string>
+    <string name="contraseña_nueva">contraseña nueva</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nuevo_carro">Publicar Vehiculo</string>
+    <string name="boton3">Publicar</string>
+    <string name="registro1">Registro</string>
+</resources>
