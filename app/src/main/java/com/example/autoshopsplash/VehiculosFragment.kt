@@ -12,8 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.autoshopsplash.databinding.FragmentVehiculosBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-
-
 class VehiculosFragment : Fragment() {
 
     private var _binding: FragmentVehiculosBinding? = null
@@ -44,14 +42,6 @@ class VehiculosFragment : Fragment() {
             val email = requireArguments().getString("email")
             intent.putExtra("email",email)
         }
-
-       // lista.add((Vehiculo("chevrolet", "2020", "12000 Km", "1600 CC","Adriana Espitia", R.drawable.vehiculos)))
-        //lista.add((Vehiculo("susuki", "2020", "12000 Km", "1200 CC","Juan Morales", R.drawable.km)))
-
-       // binding.listaVendedor.apply {
-          //  layoutManager = LinearLayoutManager(activity)
-          //  adapter = RecyclerVehiculo(lista)
-
             fab = binding.agregar
             fab!!.setOnClickListener {
                 startActivity(intent)
