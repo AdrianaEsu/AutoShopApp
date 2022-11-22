@@ -13,16 +13,16 @@
         android:theme="@style/Theme.AutoShopSplash"
         tools:targetApi="31">
 
+
         <provider
-            android:authorities="${applicationId}.fileprovider"
             android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
-        <meta-data
-            android:name="android.support.FILE_PROVIDER_PATHS"
-            android:resource="@xml/file_paths"
-            />
-    </provider>
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
 
         <activity
             android:name=".MainActivity"
@@ -48,6 +48,7 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
         <activity
             android:name=".RegistrarActivity"
             android:exported="true">
@@ -55,7 +56,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".HomeActivity"
             android:exported="true">
@@ -63,7 +63,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".RestablecerActivity"
             android:exported="true">
@@ -87,11 +86,16 @@
                 android:value="" />
         </activity>
 
+        <activity
+            android:name=".DetalleVendedorActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
-
     </application>
 
 </manifest>

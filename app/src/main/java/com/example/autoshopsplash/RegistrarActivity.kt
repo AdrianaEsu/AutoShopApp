@@ -13,15 +13,24 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.autoshopsplash.databinding.ActivityLoginBinding
 import com.example.autoshopsplash.databinding.ActivityRegistrarBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.launch
 
 class RegistrarActivity : AppCompatActivity() {
     lateinit var binding: ActivityRegistrarBinding
+    lateinit var firebaseAuth: FirebaseAuth
+    lateinit var firestoreBd:FirebaseFirestore
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegistrarBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.registro.setOnClickListener { guardarUsuario() }
+        firebaseAuth= Firebase.auth
+        firestoreBd= FirebaseFirestore.getInstance()
+       // binding.registro.setOnClickListener { guardarUsuario() }
+        binding.registro.setOnClickListener { registrarFirebase() }
     }
 
     fun guardarUsuario() {
@@ -84,5 +93,56 @@ class RegistrarActivity : AppCompatActivity() {
         }else{
             editar.commit()*/
             Toast.makeText(this, "Registro Exitoso", Toast.LENGTH_LONG).show()
+        startActivity(Intent(this, LoginActivity::class.java))
+    }
+    fun registrarFirebase(){
+
+        val nombre: String = binding.nombre.text.toString()
+        val apellido: String = binding.apellidos.text.toString()
+        val documento: String = binding.documento.text.toString()
+        val correo: String = binding.correo.text.toString()
+        val direccion: String = binding.direccion.text.toString()
+        val telefono: String = binding.telefono.text.toString()
+        val password: String = binding.password.text.toString()
+        var id:String
+
+       /* if (correo.isEmpty()) {
+            binding.correo.setHint("Campo vacio")
+            binding.correo.setHintTextColor(Color.RED)
+            Toast.makeText(this, "Digite correo", Toast.LENGTH_LONG).show()
+        } else if (password.isEmpty()) {
+            binding.password.setHint("Campo vacio")
+            binding.password.setHintTextColor(Color.RED)
+            Toast.makeText(this, "Digite contraseña", Toast.LENGTH_LONG).show()
+        }*/
+        if(nombre.isEmpty() || apellido.isEmpty() || documento.isEmpty() || correo.isEmpty() || direccion.isEmpty() || telefono.isEmpty() || password.isEmpty()){
+            Toast.makeText(this, "Existen campos vacios", Toast.LENGTH_LONG).show()
+        }
+        else{
+            firebaseAuth.createUserWithEmailAndPassword(correo,password).addOnCompleteListener(this){
+                task->
+                if (task.isSuccessful){
+                    id = firebaseAuth.currentUser?.uid.toString()
+                    var data = hashMapOf<String, String>(
+                        "nombre" to nombre,
+                        "apellido" to apellido,
+                        "documento" to documento,
+                        "direccion" to direccion,
+                        "telefono" to telefono
+                    )
+                    //registro en base de datos firestore database
+                    firestoreBd.collection("Usuarios").document(id).set(data).addOnSuccessListener {
+                        task ->
+                        Toast.makeText(this, "Registro Existoso", Toast.LENGTH_LONG).show()
+                        startActivity(Intent(this, LoginActivity::class.java))
+                    }.addOnFailureListener{
+                        error ->
+                        Toast.makeText(this, "ERROR: $error", Toast.LENGTH_LONG).show()
+                    }
+                }else{
+                    Toast.makeText(this, "Error...verifique datos ingresados", Toast.LENGTH_LONG).show()
+                }
+            }
+        }
     }
 }

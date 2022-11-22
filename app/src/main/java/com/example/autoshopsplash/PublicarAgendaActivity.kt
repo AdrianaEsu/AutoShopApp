@@ -9,28 +9,55 @@ import android.os.Bundle
 import android.os.Environment
 import android.os.PersistableBundle
 import android.provider.MediaStore
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import com.example.autoshopsplash.databinding.ActivityPublicarAgendaBinding
 import com.example.autoshopsplash.databinding.ActivityPublicarVehiculoBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import java.io.File
 
 
 class PublicarAgendaActivity:AppCompatActivity() {
     lateinit var binding: ActivityPublicarAgendaBinding
+    lateinit var firebaseAuth: FirebaseAuth
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityPublicarAgendaBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        var email=intent.getStringExtra("email")
+        firebaseAuth = Firebase.auth
+        val email = firebaseAuth.currentUser?.email.toString()
         Toast.makeText(this," BIENVENIDO A AUTOSHOP $email ", Toast.LENGTH_LONG).show()
+
+       // var email=intent.getStringExtra("email")
+        //Toast.makeText(this," BIENVENIDO A AUTOSHOP $email ", Toast.LENGTH_LONG).show()
 
         binding.cita.setOnClickListener { guardarAgenda() }
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_desplegable,menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId)
+        {
+            R.id.salir -> {
+                firebaseAuth.signOut()
+                Toast.makeText(this, "Sesion Cerrada correctamente", Toast.LENGTH_LONG).show()
+                startActivity(Intent(this, LoginActivity::class.java))
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     fun guardarAgenda() {

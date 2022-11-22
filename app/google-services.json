@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "346082430347",
+    "project_id": "autoshop-app-daeb7",
+    "storage_bucket": "autoshop-app-daeb7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:346082430347:android:916b3b532a7b1201ecb38e",
+        "android_client_info": {
+          "package_name": "com.example.autoshopsplash"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "346082430347-9l98cm6q5hhmpdao9huc7bc2pf3mv73b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.autoshopsplash",
+            "certificate_hash": "607e432fb89ea9dfd3624ff700a662379fb67107"
+          }
+        },
+        {
+          "client_id": "346082430347-q85fjn3rjfrbbt5t0vrburu3a6t4uom8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC71TN4OjcTaYc2iBLExaRe12WlFTyw_wE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "346082430347-q85fjn3rjfrbbt5t0vrburu3a6t4uom8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

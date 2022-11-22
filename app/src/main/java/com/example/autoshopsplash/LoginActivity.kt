@@ -11,11 +11,16 @@ import androidx.lifecycle.lifecycleScope
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.autoshopsplash.databinding.ActivityLoginBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.launch
 
 class LoginActivity: AppCompatActivity(){
 
     lateinit var binding: ActivityLoginBinding
+    lateinit var firebaseAuth:FirebaseAuth
+
     var email_bd: String? = ""
     var pass_bd: String? = ""
 
@@ -24,11 +29,12 @@ class LoginActivity: AppCompatActivity(){
         binding=ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        firebaseAuth= Firebase.auth
 
-       val room = Room.databaseBuilder(this, bdUsuarios::class.java, "bdAutoshop").build()
         binding.ingresar.setOnClickListener {
-            val correo: String = binding.email.text.toString()
 
+       /*val room = Room.databaseBuilder(this, bdUsuarios::class.java, "bdAutoshop").build()
+            val correo: String = binding.email.text.toString()
             lifecycleScope.launch {
                 var usuRes = room.daoUsuario().buscarUsuario(correo)
                 if(usuRes!=null) {
@@ -40,13 +46,15 @@ class LoginActivity: AppCompatActivity(){
                     pass_bd=""
                 }
                 validarRoom(email_bd!!, pass_bd!!)
-            }
+            }*/
+        validarFirebase()
         }
        // binding.ingresar.setOnClickListener{validar()}
         binding.registrar.setOnClickListener{enlace_registro()}
         binding.restablecer.setOnClickListener{enlace_restablecer()}
     }
-        fun validar(){
+
+        fun validar(){//funcion para validar desde el dispositivo
             val correo:String=binding.email.text.toString()
             val password:String=binding.pass.text.toString()
             var pref=getSharedPreferences(correo, Context.MODE_PRIVATE)
@@ -73,7 +81,7 @@ class LoginActivity: AppCompatActivity(){
             }
         }
 
-    fun validarRoom(email:String, pass:String) {
+    fun validarRoom(email:String, pass:String) {//funcion para validar desde la memoria con room
         val correo: String = binding.email.text.toString()
         val password: String = binding.pass.text.toString()
 
@@ -98,6 +106,39 @@ class LoginActivity: AppCompatActivity(){
                 Toast.makeText(this, "Usuario incorrecto o no exixte", Toast.LENGTH_LONG).show()
             }
         }
+
+    fun validarFirebase(){
+        val correo:String=binding.email.text.toString()
+        val password:String=binding.pass.text.toString()
+
+        if (correo.isEmpty()) {
+            binding.email.setHint("Campo vacio")
+            binding.email.setHintTextColor(Color.RED)
+            Toast.makeText(this, "Digite correo", Toast.LENGTH_LONG).show()
+        } else if (password.isEmpty()) {
+            binding.pass.setHint("Campo vacio")
+            binding.pass.setHintTextColor(Color.RED)
+            Toast.makeText(this, "Digite contraseña", Toast.LENGTH_LONG).show()
+        }else{
+            firebaseAuth.signInWithEmailAndPassword(correo,password).addOnCompleteListener(this){
+                task->
+                if(task.isSuccessful){
+                    val user =firebaseAuth.currentUser
+                    if (user != null) {
+                        Toast.makeText(
+                            this,
+                            "BIENVENIDO A AUTOSHOP ${user.email}",
+                            Toast.LENGTH_LONG
+                        ).show()
+                        startActivity(Intent(this, HomeActivity::class.java))
+                    }
+                }else{
+                    Toast.makeText(this, "Datos incorrectos, Verifique sus datos", Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+    }
+
 
     fun enlace_registro(){
         startActivity(Intent(this, RegistrarActivity::class.java))

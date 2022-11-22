@@ -13,18 +13,17 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/fotoVh"
-            android:layout_width="250dp"
-            android:layout_height="222dp"
+            android:id="@+id/fotoV"
+            android:layout_width="370dp"
+            android:layout_height="117dp"
             android:layout_margin="10dp"
             android:layout_marginTop="170dp"
             android:layout_weight="1"
-            android:padding="10dp"
-            app:srcCompat="@mipmap/tracket" />
+            android:padding="10dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -54,26 +53,6 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/kilometrajeV"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginRight="7dp"
-                android:fontFamily="@font/roboto_bold"
-                android:padding="10dp"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/cilindrajeV"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginRight="7dp"
-                android:fontFamily="@font/roboto_bold"
-                android:padding="10dp"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
-
-            <TextView
                 android:id="@+id/precioV"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -83,15 +62,6 @@
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/vendedorV"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginRight="7dp"
-                android:fontFamily="@font/roboto_bold"
-                android:padding="10dp"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
         </LinearLayout>
 
     </LinearLayout>
